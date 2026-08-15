@@ -1,0 +1,45 @@
+name: Organization Standards
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate public standards
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            README.md
+            profile/README.md
+            AGENTS.md
+            CONTRIBUTING.md
+            SECURITY.md
+            SUPPORT.md
+            CODE_OF_CONDUCT.md
+            governance/repository-naming.md
+            governance/repository-standards.md
+            governance/access-model.md
+            governance/security-baseline.md
+            governance/labels.md
+            .github/PULL_REQUEST_TEMPLATE.md
+          )
+          for path in "${required[@]}"; do
+            test -s "$path" || { echo "Missing or empty: $path"; exit 1; }
+          done
+      - name: Reject obvious private material
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -nE '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16})'; then
+            echo "Potential secret material detected"
+            exit 1
+          fi
