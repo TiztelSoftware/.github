@@ -1,0 +1,49 @@
+name: Defect
+description: Report a reproducible defect
+title: "Defect: "
+labels: ["type:defect", "state:draft"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary and impact
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Affected version or commit
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options: [Critical, High, Medium, Low]
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Proposed validation
+    validations:
+      required: true
+
