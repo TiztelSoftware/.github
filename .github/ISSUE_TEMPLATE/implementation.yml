@@ -1,0 +1,55 @@
+name: Implementation Work Item
+description: Authorized implementation contract
+title: "Implementation: "
+labels: ["type:implementation", "state:draft"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+    validations:
+      required: true
+  - type: textarea
+    id: trace
+    attributes:
+      label: Specification and architecture trace
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Authorized write scope
+      description: One repository path per line. Do not use broad wildcards.
+    validations:
+      required: true
+  - type: textarea
+    id: prohibited
+    attributes:
+      label: Prohibited scope and sensitive components
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation commands and required evidence
+    validations:
+      required: true
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Risks and rollback considerations
+    validations:
+      required: true
+
