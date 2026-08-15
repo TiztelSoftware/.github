@@ -1,0 +1,43 @@
+name: Integration Work
+description: Govern an external system integration
+title: "Integration: "
+labels: ["type:integration", "state:draft"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective and systems involved
+    validations:
+      required: true
+  - type: textarea
+    id: auth
+    attributes:
+      label: Authentication and authorization method
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Interface contract, rate limits, and idempotency
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: Failure, retry, timeout, and recovery behavior
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: Test environment and validation
+    validations:
+      required: true
+  - type: textarea
+    id: secrets
+    attributes:
+      label: Secret names and handling
+      description: Never enter secret values.
+    validations:
+      required: true
+
